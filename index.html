@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en" class="tmpl-lotus-courtyard">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sharat &amp; Komal's Wedding </title>
+  <meta name="description" content="A royal celebration in Rishikesh. Join us for the wedding of Sharat and Komal." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="tmpl-lotus-courtyard">
+  <a href="#hero" class="skip-link">Skip to content</a>
+
+  <!-- Audio Player & Floating Music Controller -->
+  <audio id="weddingAudio" src="./assets/audio/music.mp3" preload="auto" loop></audio>
+  <button id="musicToggle" class="music-toggle" type="button" aria-label="Pause music" style="display: none;">
+    <img src="./assets/theme/music-icon.webp" alt="Toggle Music" />
+  </button>
+
+  <!-- Interactive Entrance Gate / Intro Scene -->
+  <div id="introScene" class="intro" aria-hidden="false">
+    <div class="intro__scene">
+      <img class="intro__bg intro__bg--dark" src="./assets/theme/hero-bg-dark.webp" alt="Courtyard at dusk" />
+      <img id="introBgLit" class="intro__bg intro__bg--lit" src="./assets/theme/hero-bg-lit.webp" alt="Courtyard lit with golden light" />
+    </div>
+    <div class="intro__scrim" aria-hidden="true"></div>
+    <div id="introFlash" class="intro__flash" style="display: none;" aria-hidden="true"></div>
+
+    <!-- <button id="skipBtn" class="intro__skip" type="button">skip intro</button> -->
+
+    <!-- Hanging Bell Rope with Pull Physics -->
+    <button id="ropeBtn" class="intro__rope intro__rope--idle" type="button" aria-label="Pull the rope to light our celebration">
+      <span id="ropeHalo" class="intro__rope-halo" aria-hidden="true"></span>
+      <img id="ropeImg" src="./assets/theme/rope-pull.webp" alt="" draggable="false" />
+    </button>
+
+    <!-- Content Revealed Sequentially upon Lighting -->
+    <div class="intro__content">
+      <div class="intro__reveal">
+        <div id="revealNames" class="intro__reveal-item">
+          <p class="eyebrow">The Wedding Of</p>
+          <h1 class="intro__names">Sharat <span class="intro__amp script">&amp;</span> Komal</h1>
+        </div>
+        <div id="revealDate" class="intro__reveal-item">
+          <p class="intro__date">26 November 2026</p>
+        </div>
+        <div id="revealVenue" class="intro__reveal-item">
+          <p class="intro__venue">Rishikesh</p>
+        </div>
+      </div>
+
+      <div id="revealLotus" class="intro__reveal-item intro__lotus-scene">
+        <button id="lotusBtn" class="intro__lotus" type="button" aria-label="Tap the lotus to join us" tabindex="-1">
+          <span id="lotusGlow" class="intro__lotus-soft-glow" style="display: none;" aria-hidden="true"></span>
+          <img id="lotusClosed" class="intro__lotus-img intro__lotus-img--closed" src="./assets/theme/lotus-closed.webp" alt="" />
+          <img id="lotusOpen" class="intro__lotus-img intro__lotus-img--open" style="opacity: 0;" src="./assets/theme/lotus-open.webp" alt="" />
+        </button>
+        <p class="intro__hint">Tap the lotus to join us</p>
+      </div>
+
+      <p id="pullHint" class="intro__hint intro__hint--pull">Pull the rope to light our celebration</p>
+    </div>
+  </div>
+
+  <!-- Main Website Content -->
+  <main id="top">
+
+    <!-- 1. HERO INVITATION SECTION -->
+    <section class="invite" id="hero">
+      <img class="invite__bg" src="./assets/theme/peacock-medallion.webp" alt="" aria-hidden="true" />
+      <div class="invite__bg-tint" aria-hidden="true"></div>
+      
+      <!-- Shower of Falling Golden Flower Petals -->
+      <div id="petalsContainer" class="invite__petals" aria-hidden="true"></div>
+
+      <div class="invite__content">
+        <h1 class="invite__names">Sharat</h1>
+        <span class="invite__amp script">&amp;</span>
+        <h1 class="invite__names">Komal</h1>
+        <p class="invite__status">Are Getting Married</p>
+
+        <div class="invite__date-row">
+          <span class="invite__date-unit">NOV</span>
+          <span class="invite__date-day">26</span>
+          <span class="invite__date-sep"></span>
+          <span class="invite__date-unit">2026</span>
+        </div>
+        <p class="invite__weekday script">Thursday</p>
+
+        <div class="invite__venue-strip">
+          <p class="invite__venue-name">Rishikesh</p>
+        </div>
+
+        <div class="invite__ctas">
+          <a class="invite__btn invite__btn--solid" href="#save-date">Save The Date</a>
+          <a class="invite__btn invite__btn--outline" href="#events">View Events</a>
+        </div>
+      </div>
+
+      <a class="invite__scroll-cue" href="#events" aria-label="Scroll down">
+        <svg width="14" height="9" viewBox="0 0 18 11" fill="none">
+          <path d="M1 1.5 9 9.5 17 1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </a>
+    </section>
+
+    <!-- 2. MEET THE COUPLE SECTION -->
+    <section class="section couple" id="couple">
+      <div class="couple__bg" style="background-image: url('./assets/theme/bg-couple.webp');" aria-hidden="true"></div>
+      <div class="couple__bg-tint" aria-hidden="true"></div>
+      <img class="couple__tree couple__tree--left" src="./assets/theme/tree-left.webp" alt="" aria-hidden="true" />
+      <img class="couple__tree couple__tree--right" src="./assets/theme/tree-left.webp" alt="" aria-hidden="true" />
+      
+      <div class="section-inner">
+        <p class="eyebrow">A Love Story</p>
+        <h2 class="couple__title">Meet the Couple</h2>
+        <div class="divider"></div>
+        <p class="couple__story">
+      A winter evening in Rishikesh, the sacred Ganga flowing peacefully beside us, and two hearts finding each other — that was all it took. With the divine blessings of Lord Shiva, we now step forward together, ready to begin a beautiful new chapter of love, faith, and togetherness.
+        </p>
+        <span class="couple__hashtag script">#KOSHA</span>
+        <img class="couple__peacock" src="./assets/theme/motif-peacock.webp" alt="" aria-hidden="true" />
+      </div>
+    </section>
+
+    <!-- 3. EVENTS JOURNEY (FARMAN SCROLLS) -->
+    <section class="section events" id="events">
+      <div class="events__bg" style="background-image: url('./assets/theme/bg-events.webp');" aria-hidden="true"></div>
+      <div class="events__bg-tint" aria-hidden="true"></div>
+      <img class="events__banaleaf" src="./assets/theme/banaleaf.webp" alt="" aria-hidden="true" />
+      
+      <div class="section-inner">
+        <p class="eyebrow">Celebration Journey</p>
+        <h2 class="events__title">Our Events</h2>
+        <img class="events__divider" src="./assets/theme/events-divider.webp" alt="" aria-hidden="true" />
+        
+        <ul class="events__list">
+          <!-- Event 1: Haldi Haath -->
+          <li class="events__stop events__stop--left events__stop--idle" data-event-index="0">
+            <div class="events__card">
+              <div class="events__rolled-wrap">
+                <img class="events__rolled-img" src="./assets/theme/farman-rolled.webp" alt="" aria-hidden="true" />
+              </div>
+              <div class="events__open-wrap">
+                <img class="events__parchment-img" src="./assets/theme/farman-open.webp" alt="" aria-hidden="true" />
+                <div class="events__content" aria-label="Mehendi ceremony details">
+                  <img class="events__icon" src="./assets/icons/icon-haldi.webp" alt="" aria-hidden="true" />
+                  <h3 class="events__name script">Haldi Haath</h3>
+                  <span class="events__rule" aria-hidden="true"></span>
+                  <p class="events__when">25 November 2026  <br>9:00 AM</p>
+                  <p class="events__location">Vill- Kothar, Girsain.</p>
+                  <p class="events__note">Wear yellow, bring your smiles & let the Haldi celebrations begin!</p>
+                  <span class="events__rule events__rule--map" aria-hidden="true"></span>
+                   <a class="events__link" href="https://maps.app.goo.gl/1kpi95gYw3z2TWvv8" target="_blank" rel="noreferrer">
+                    <svg width="11" height="14" viewBox="0 0 11 14" fill="none" aria-hidden="true" class="events__pin">
+                      <path d="M5.5 0C2.46 0 0 2.46 0 5.5c0 4.12 5.5 8.5 5.5 8.5S11 9.62 11 5.5C11 2.46 8.54 0 5.5 0Z" fill="currentColor" opacity=".72"></path>
+                      <circle cx="5.5" cy="5.5" r="2" fill="#fff" opacity=".88"></circle>
+                    </svg>
+                    Open in Maps
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Event Inter Divider -->
+          <li class="events__inter events__inter--visible" aria-hidden="true">
+            <svg width="88" height="18" viewBox="0 0 88 18" fill="none">
+              <defs>
+                <linearGradient id="fgl1" x1="0" y1="0" x2="32" y2="0" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="rgba(216,169,87,0)"></stop>
+                  <stop offset="100%" stop-color="rgba(216,169,87,.48)"></stop>
+                </linearGradient>
+                <linearGradient id="fgr1" x1="56" y1="0" x2="88" y2="0" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="rgba(216,169,87,.48)"></stop>
+                  <stop offset="100%" stop-color="rgba(216,169,87,0)"></stop>
+                </linearGradient>
+              </defs>
+              <line x1="0" y1="9" x2="32" y2="9" stroke="url(#fgl1)" stroke-width="1"></line>
+              <circle cx="37" cy="9" r="1.8" fill="rgba(216,169,87,.38)"></circle>
+              <circle cx="44" cy="9" r="3.2" fill="rgba(216,169,87,.58)"></circle>
+              <circle cx="51" cy="9" r="1.8" fill="rgba(216,169,87,.38)"></circle>
+              <line x1="56" y1="9" x2="88" y2="9" stroke="url(#fgr1)" stroke-width="1"></line>
+            </svg>
+          </li>
+
+          <!-- Event 2: Haldi -->
+          <li class="events__stop events__stop--right events__stop--idle" data-event-index="1">
+            <div class="events__card">
+              <div class="events__rolled-wrap">
+                <img class="events__rolled-img" src="./assets/theme/farman-rolled.webp" alt="" aria-hidden="true" />
+              </div>
+              <div class="events__open-wrap">
+                <img class="events__parchment-img" src="./assets/theme/farman-open.webp" alt="" aria-hidden="true" />
+                <div class="events__content" aria-label="Haldi ceremony details">
+                  <img class="events__icon" src="./assets/icons/icon-haldi.webp" alt="" aria-hidden="true" />
+                  <h3 class="events__name script">Mangal Snan</h3>
+                  <span class="events__rule" aria-hidden="true"></span>
+                   <p class="events__when">25 November 2026  <br>9:00 AM</p>
+                  <p class="events__location">Vill- Kothar, Girsain.</p>
+                  <p class="events__note">Come aglow in sunlit yellows &amp; ivory</p>
+                  <span class="events__rule events__rule--map" aria-hidden="true"></span>
+                  <a class="events__link" href="https://maps.app.goo.gl/1kpi95gYw3z2TWvv8" target="_blank" rel="noreferrer">
+                    <svg width="11" height="14" viewBox="0 0 11 14" fill="none" aria-hidden="true" class="events__pin">
+                      <path d="M5.5 0C2.46 0 0 2.46 0 5.5c0 4.12 5.5 8.5 5.5 8.5S11 9.62 11 5.5C11 2.46 8.54 0 5.5 0Z" fill="currentColor" opacity=".72"></path>
+                      <circle cx="5.5" cy="5.5" r="2" fill="#fff" opacity=".88"></circle>
+                    </svg>
+                    Open in Maps
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Event Inter Divider with Lotus Medallion -->
+          <li class="events__inter events__inter--lotus events__inter--visible" aria-hidden="true">
+            <img src="./assets/theme/invite-divider.webp" alt="" />
+          </li>
+
+          <!-- Event 3: Sangeet -->
+          <li class="events__stop events__stop--left events__stop--idle" data-event-index="2">
+            <div class="events__card">
+              <div class="events__rolled-wrap">
+                <img class="events__rolled-img" src="./assets/theme/farman-rolled.webp" alt="" aria-hidden="true" />
+              </div>
+              <div class="events__open-wrap">
+                <img class="events__parchment-img" src="./assets/theme/farman-open.webp" alt="" aria-hidden="true" />
+                <div class="events__content" aria-label="Sangeet ceremony details">
+                  <img class="events__icon" src="./assets/icons/icon-sangeet.webp" alt="" aria-hidden="true" />
+                  <h3 class="events__name script">Mahila Sangeet</h3>
+                  <span class="events__rule" aria-hidden="true"></span>
+                    <p class="events__when">25 November 2026  <br>3:00 PM</p>
+                  <p class="events__location">Vill- Kothar, Girsain.</p>
+                  <p class="events__note">A night of music, dance, and memories!</p>
+                  <span class="events__rule events__rule--map" aria-hidden="true"></span>
+                  <a class="events__link" href="https://maps.app.goo.gl/1kpi95gYw3z2TWvv8" target="_blank" rel="noreferrer">
+                    <svg width="11" height="14" viewBox="0 0 11 14" fill="none" aria-hidden="true" class="events__pin">
+                      <path d="M5.5 0C2.46 0 0 2.46 0 5.5c0 4.12 5.5 8.5 5.5 8.5S11 9.62 11 5.5C11 2.46 8.54 0 5.5 0Z" fill="currentColor" opacity=".72"></path>
+                      <circle cx="5.5" cy="5.5" r="2" fill="#fff" opacity=".88"></circle>
+                    </svg>
+                    Open in Maps
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Event Inter Divider -->
+          <li class="events__inter events__inter--visible" aria-hidden="true">
+            <svg width="88" height="18" viewBox="0 0 88 18" fill="none">
+              <line x1="0" y1="9" x2="32" y2="9" stroke="url(#fgl1)" stroke-width="1"></line>
+              <circle cx="37" cy="9" r="1.8" fill="rgba(216,169,87,.38)"></circle>
+              <circle cx="44" cy="9" r="3.2" fill="rgba(216,169,87,.58)"></circle>
+              <circle cx="51" cy="9" r="1.8" fill="rgba(216,169,87,.38)"></circle>
+              <line x1="56" y1="9" x2="88" y2="9" stroke="url(#fgr1)" stroke-width="1"></line>
+            </svg>
+          </li>
+
+          <!-- Event 4: Shaadi -->
+          <li class="events__stop events__stop--right events__stop--idle" data-event-index="3">
+            <div class="events__card">
+              <div class="events__rolled-wrap">
+                <img class="events__rolled-img" src="./assets/theme/farman-rolled.webp" alt="" aria-hidden="true" />
+              </div>
+              <div class="events__open-wrap">
+                <img class="events__parchment-img" src="./assets/theme/farman-open.webp" alt="" aria-hidden="true" />
+                <div class="events__content" aria-label="Shaadi ceremony details">
+                  <img class="events__icon" src="./assets/icons/icon-shaadi.webp" alt="" aria-hidden="true" />
+                  <h3 class="events__name script">Shri Satyanarayan Katha </h3>
+                  <span class="events__rule" aria-hidden="true"></span>
+                       <p class="events__when">25 November 2026  <br>7:00 PM</p>
+                  <p class="events__location">Vill- Kothar, Girsain.</p>
+                  <p class="events__note">An evening of devotion, blessings, and togetherness.</p>
+                  <span class="events__rule events__rule--map" aria-hidden="true"></span>
+                  <a class="events__link" href="https://maps.app.goo.gl/1kpi95gYw3z2TWvv8" target="_blank" rel="noreferrer">
+                    <svg width="11" height="14" viewBox="0 0 11 14" fill="none" aria-hidden="true" class="events__pin">
+                      <path d="M5.5 0C2.46 0 0 2.46 0 5.5c0 4.12 5.5 8.5 5.5 8.5S11 9.62 11 5.5C11 2.46 8.54 0 5.5 0Z" fill="currentColor" opacity=".72"></path>
+                      <circle cx="5.5" cy="5.5" r="2" fill="#fff" opacity=".88"></circle>
+                    </svg>
+                    Open in Maps
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Event Inter Divider -->
+          <li class="events__inter events__inter--visible" aria-hidden="true">
+            <svg width="88" height="18" viewBox="0 0 88 18" fill="none">
+              <line x1="0" y1="9" x2="32" y2="9" stroke="url(#fgl1)" stroke-width="1"></line>
+              <circle cx="37" cy="9" r="1.8" fill="rgba(216,169,87,.38)"></circle>
+              <circle cx="44" cy="9" r="3.2" fill="rgba(216,169,87,.58)"></circle>
+              <circle cx="51" cy="9" r="1.8" fill="rgba(216,169,87,.38)"></circle>
+              <line x1="56" y1="9" x2="88" y2="9" stroke="url(#fgr1)" stroke-width="1"></line>
+            </svg>
+          </li>
+
+          <!-- Event 5: Reception -->
+          <li class="events__stop events__stop--left events__stop--idle" data-event-index="4">
+            <div class="events__card">
+              <div class="events__rolled-wrap">
+                <img class="events__rolled-img" src="./assets/theme/farman-rolled.webp" alt="" aria-hidden="true" />
+              </div>
+              <div class="events__open-wrap">
+                <img class="events__parchment-img" src="./assets/theme/farman-open.webp" alt="" aria-hidden="true" />
+                <div class="events__content" aria-label="Reception ceremony details">
+                  <img class="events__icon" src="./assets/icons/icon-mehendi.webp" alt="" aria-hidden="true" />
+                  <h3 class="events__name script">Mehendi</h3>
+                  <span class="events__rule" aria-hidden="true"></span>
+                 <p class="events__when">25 November 2026  <br>9:00 PM</p>
+                  <p class="events__location">Vill- Kothar, Girsain.</p>
+                  <p class="events__note">Colors of henna, joy, and celebration!</p>
+                  <span class="events__rule events__rule--map" aria-hidden="true"></span>
+                  <a class="events__link" href="https://www.google.com/maps/search/?api=1&query=Lake+Pichola+Udaipur" target="_blank" rel="noreferrer">
+                    <svg width="11" height="14" viewBox="0 0 11 14" fill="none" aria-hidden="true" class="events__pin">
+                      <path d="M5.5 0C2.46 0 0 2.46 0 5.5c0 4.12 5.5 8.5 5.5 8.5S11 9.62 11 5.5C11 2.46 8.54 0 5.5 0Z" fill="currentColor" opacity=".72"></path>
+                      <circle cx="5.5" cy="5.5" r="2" fill="#fff" opacity=".88"></circle>
+                    </svg>
+                    Open in Maps
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Event Inter Divider -->
+          <li class="events__inter events__inter--visible" aria-hidden="true">
+            <svg width="88" height="18" viewBox="0 0 88 18" fill="none">
+              <line x1="0" y1="9" x2="32" y2="9" stroke="url(#fgl1)" stroke-width="1"></line>
+              <circle cx="37" cy="9" r="1.8" fill="rgba(216,169,87,.38)"></circle>
+              <circle cx="44" cy="9" r="3.2" fill="rgba(216,169,87,.58)"></circle>
+              <circle cx="51" cy="9" r="1.8" fill="rgba(216,169,87,.38)"></circle>
+              <line x1="56" y1="9" x2="88" y2="9" stroke="url(#fgr1)" stroke-width="1"></line>
+            </svg>
+          </li>
+
+          <!-- Event 6: Vidaai -->
+          <li class="events__stop events__stop--right events__stop--idle" data-event-index="5">
+            <div class="events__card">
+              <div class="events__rolled-wrap">
+                <img class="events__rolled-img" src="./assets/theme/farman-rolled.webp" alt="" aria-hidden="true" />
+              </div>
+              <div class="events__open-wrap">
+                <img class="events__parchment-img" src="./assets/theme/farman-open.webp" alt="" aria-hidden="true" />
+                <div class="events__content" aria-label="Vidaai ceremony details">
+                  <img class="events__icon" src="./assets/icons/icon-vidaai.webp" alt="" aria-hidden="true" />
+                  <h3 class="events__name script">Vivah</h3>
+                  <span class="events__rule" aria-hidden="true"></span>
+                  <p class="events__when">26 November 2026  <br>8:30 PM</p>
+                  <p class="events__location">Rishikesh</p>
+                  <p class="events__note">Two hearts, One forever</p>
+                  <span class="events__rule events__rule--map" aria-hidden="true"></span>
+                  <a class="events__link" href="https://maps.app.goo.gl/qaMwsLvMS14Nb1rQ7" target="_blank" rel="noreferrer">
+                    <svg width="11" height="14" viewBox="0 0 11 14" fill="none" aria-hidden="true" class="events__pin">
+                      <path d="M5.5 0C2.46 0 0 2.46 0 5.5c0 4.12 5.5 8.5 5.5 8.5S11 9.62 11 5.5C11 2.46 8.54 0 5.5 0Z" fill="currentColor" opacity=".72"></path>
+                      <circle cx="5.5" cy="5.5" r="2" fill="#fff" opacity=".88"></circle>
+                    </svg>
+                    Open in Maps
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 4. GALLERY WALL -->
+    <section class="section gallery" id="gallery" oncontextmenu="return false;">
+      <div class="gallery__bg" style="background-image: url('./assets/theme/bg-gallery.webp');" aria-hidden="true"></div>
+      <div class="gallery__bg-tint" aria-hidden="true"></div>
+      
+      <div class="section-inner">
+        <div>
+          <p class="eyebrow">Memories</p>
+          <h2 class="gallery__title">Gallery Wall</h2>
+          <div class="divider"></div>
+        </div>
+
+        <div class="gallery__carousel" id="galleryCarousel" aria-label="Photo gallery carousel">
+          <!-- Carousel Viewport (Only 1 photo visible at a time) -->
+          <div class="gallery__viewport">
+            <div class="gallery__track" id="galleryTrack">
+              <div class="gallery__slide" data-index="0">
+                <div class="gallery__photo-wrap">
+                  <div class="gallery__shield" aria-hidden="true"></div>
+                  <img class="gallery__photo" src="./assets/gallery/img01.png" alt="Komal &amp; Sharat" draggable="false" loading="eager" />
+                </div>
+              </div>
+              <div class="gallery__slide" data-index="1">
+                <div class="gallery__photo-wrap">
+                  <div class="gallery__shield" aria-hidden="true"></div>
+                  <img class="gallery__photo" src="./assets/gallery/img02.png" alt="Komal &amp; Sharat" draggable="false" loading="lazy" />
+                </div>
+              </div>
+              <div class="gallery__slide" data-index="2">
+                <div class="gallery__photo-wrap">
+                  <div class="gallery__shield" aria-hidden="true"></div>
+                  <img class="gallery__photo" src="./assets/gallery/img03.png" alt="Komal &amp; Sharat" draggable="false" loading="lazy" />
+                </div>
+              </div>
+              <div class="gallery__slide" data-index="3">
+                <div class="gallery__photo-wrap">
+                  <div class="gallery__shield" aria-hidden="true"></div>
+                  <img class="gallery__photo" src="./assets/gallery/img04.png" alt="Komal &amp; Sharat" draggable="false" loading="lazy" />
+                </div>
+              </div>
+              <div class="gallery__slide" data-index="4">
+                <div class="gallery__photo-wrap">
+                  <div class="gallery__shield" aria-hidden="true"></div>
+                  <img class="gallery__photo" src="./assets/gallery/img05.png" alt="Komal &amp; Sharat" draggable="false" loading="lazy" />
+                </div>
+              </div>
+              <div class="gallery__slide" data-index="5">
+                <div class="gallery__photo-wrap">
+                  <div class="gallery__shield" aria-hidden="true"></div>
+                  <img class="gallery__photo" src="./assets/gallery/img06.png" alt="Komal &amp; Sharat" draggable="false" loading="lazy" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pagination Dots -->
+          <div class="gallery__dots" id="galleryDots" role="tablist" aria-label="Choose photo slide">
+            <button class="gallery__dot is-active" type="button" role="tab" aria-label="Photo 1" data-index="0"></button>
+            <button class="gallery__dot" type="button" role="tab" aria-label="Photo 2" data-index="1"></button>
+            <button class="gallery__dot" type="button" role="tab" aria-label="Photo 3" data-index="2"></button>
+            <button class="gallery__dot" type="button" role="tab" aria-label="Photo 4" data-index="3"></button>
+            <button class="gallery__dot" type="button" role="tab" aria-label="Photo 5" data-index="4"></button>
+            <button class="gallery__dot" type="button" role="tab" aria-label="Photo 6" data-index="5"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. COUNTDOWN SECTION -->
+    <section class="section countdown" id="countdown">
+      <div class="countdown__bg" style="background-image: url('./assets/theme/bg-essentials.webp');" aria-hidden="true"></div>
+      <div class="countdown__bg-tint" aria-hidden="true"></div>
+      <img class="countdown__corner countdown__corner--left" src="./assets/theme/corner-left.webp" alt="" aria-hidden="true" />
+      <img class="countdown__corner countdown__corner--right" src="./assets/theme/corner-right.webp" alt="" aria-hidden="true" />
+      
+      <div class="section-inner">
+        <div>
+          <img class="countdown__chhatri" src="./assets/theme/motif-chhatri.webp" alt="" aria-hidden="true" />
+          <p class="eyebrow">The Royal Celebration</p>
+          <h2 class="countdown__title">Counting The Moments</h2>
+          <div class="divider"></div>
+          <p class="countdown__date-badge">26 November 2026 &bull; 8:30 PM &bull; Rishikesh</p>
+        </div>
+
+        <div class="countdown__frame">
+          <div class="countdown__grid" aria-label="Countdown to 26 November 2026, 8:30 PM">
+            <div class="countdown__item">
+              <div class="countdown__box">
+                <span class="countdown__number" id="cdDays">00</span>
+                <span class="countdown__label">Days</span>
+              </div>
+            </div>
+            <span class="countdown__sep" aria-hidden="true">:</span>
+            <div class="countdown__item">
+              <div class="countdown__box">
+                <span class="countdown__number" id="cdHours">00</span>
+                <span class="countdown__label">Hours</span>
+              </div>
+            </div>
+            <span class="countdown__sep" aria-hidden="true">:</span>
+            <div class="countdown__item">
+              <div class="countdown__box">
+                <span class="countdown__number" id="cdMinutes">00</span>
+                <span class="countdown__label">Minutes</span>
+              </div>
+            </div>
+            <span class="countdown__sep" aria-hidden="true">:</span>
+            <div class="countdown__item">
+              <div class="countdown__box">
+                <span class="countdown__number" id="cdSeconds">00</span>
+                <span class="countdown__label">Seconds</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="countdown__message">Until we begin our forever as Komal &amp; Sharat</p>
+      </div>
+    </section>
+
+    <!-- 6. SAVE THE DATE SECTION -->
+    <section class="section save-date" id="save-date">
+      <div class="save-date__bg" style="background-image: url('./assets/theme/bg-rsvp.webp');" aria-hidden="true"></div>
+      <div class="save-date__bg-tint" aria-hidden="true"></div>
+      
+      <div class="section-inner">
+        <p class="eyebrow">Mark Your Calendar</p>
+        <h2 class="save-date__title script">Save The Date</h2>
+        <div class="divider"></div>
+        <p class="save-date__body">
+          We would be honored by your gracious presence as we celebrate the sacred bond of marriage.
+        </p>
+
+        <div class="save-date__card">
+          <div class="save-date__card-inner">
+            <div class="save-date__date-badge">
+              <span class="save-date__badge-month">NOVEMBER</span>
+              <span class="save-date__badge-day">26</span>
+              <span class="save-date__badge-year">2026</span>
+            </div>
+
+            <div class="save-date__info">
+              <h3 class="save-date__couple">Komal <span class="script">&amp;</span> Sharat</h3>
+              <p class="save-date__time">Thursday &bull; 8:30 PM Onwards</p>
+              <p class="save-date__venue">Rishikesh, Uttarakhand</p>
+            </div>
+          </div>
+
+          <div class="save-date__actions">
+            <!-- Google Calendar Button -->
+            <a 
+              class="save-date__cal-btn save-date__cal-btn--google" 
+              href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+of+Komal+%26+Sharat&dates=20261126T150000Z/20261126T183000Z&details=Join+us+to+celebrate+the+wedding+of+Komal+and+Sharat+in+Rishikesh!&location=Rishikesh%2C+Uttarakhand%2C+India&sf=true&output=xml" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              aria-label="Add to Google Calendar"
+            >
+              <svg class="save-date__cal-icon" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+                <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM7 11h5v5H7z"/>
+              </svg>
+              <span>Add to Google Calendar</span>
+            </a>
+
+            <!-- Download iCal (.ics) -->
+            <a 
+              class="save-date__cal-btn save-date__cal-btn--ical" 
+              id="icalBtn"
+              href="./assets/Sharat&Komal.pdf" 
+              download="./assets/Sharat&Komal.pdf"
+              aria-label="Download calendar event file"
+            >
+              <svg class="save-date__cal-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              <span>Download Event File</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. CLOSING / FOOTER SECTION -->
+    <section class="section closing">
+      <div class="closing__bg" style="background-image: url('./assets/theme/bg-footer.webp');" aria-hidden="true"></div>
+      <div class="closing__bg-tint" aria-hidden="true"></div>
+      <img class="closing__cow" src="./assets/theme/motif-cow.webp" alt="" aria-hidden="true" style="transform: scaleX(-1);" />
+      <img class="closing__elephant" src="./assets/theme/motif-elephant.webp" alt="" aria-hidden="true" />
+
+      <div class="section-inner">
+        <img class="closing__lotus" src="./assets/theme/motif-lotus.webp" alt="" aria-hidden="true" />
+        <p class="eyebrow">With All Our Love</p>
+        <h2 class="closing__title script">Sharat &amp; Komal</h2>
+        <p class="closing__names">You make this moment complete.</p>
+
+        <!-- Contact Options: Call Us & WhatsApp -->
+        <div class="closing__contact">
+          <p class="closing__contact-label">Connect With Us</p>
+          <div class="closing__contact-buttons">
+            <a class="closing__btn closing__btn--call" href="tel:+917300935101" aria-label="Call Us at 7300935101">
+              <svg class="closing__btn-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <span>Call Us: 7300935101</span>
+            </a>
+
+            <a class="closing__btn closing__btn--whatsapp" href="https://wa.me/917300935101?text=Hi%20Komal%20%26%20Sharat%2C%20congratulations%20on%20your%20wedding!" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp at 7300935101">
+              <svg class="closing__btn-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm5.82 14.19c-.24.68-1.4 1.26-1.95 1.34-.51.07-1.18.1-3.41-.83-2.85-1.18-4.69-4.08-4.83-4.27-.14-.19-1.16-1.54-1.16-2.94 0-1.4.73-2.09 1-2.37.24-.28.53-.35.7-.35.18 0 .35 0 .5.01.17.01.38-.06.6.45.23.55.77 1.9.84 2.04.07.14.12.31.02.5-.09.19-.14.3-.28.47-.14.17-.3.37-.42.5-.14.14-.29.3-.12.59.16.29.73 1.2 1.56 1.94 1.08.96 1.99 1.26 2.27 1.4.28.14.45.12.61-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.64-.14.26.1 1.65.78 1.93.92.28.14.47.21.54.33.07.12.07.7-.17 1.38z"/>
+              </svg>
+              <span>WhatsApp: 7300935101</span>
+            </a>
+          </div>
+        </div>
+
+        <img class="closing__diya" src="./assets/theme/diya.webp" alt="" aria-hidden="true" />
+        <p class="closing__date eyebrow">26 · November · 2026</p>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
